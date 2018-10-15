@@ -10,7 +10,7 @@ public static void main(String args[]) {
 			int client = 0;
 			try {
 				// Creating ServerSocket and Socket
-				ServerSocket server = new ServerSocket(4000);
+				ServerSocket server = new ServerSocket(8867);
 
 				while (true) {
 					Socket socket = server.accept();
