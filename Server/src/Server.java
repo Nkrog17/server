@@ -1,4 +1,3 @@
-
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -7,7 +6,7 @@ import java.util.Date;
 public class Server {
 	public static void main(String[] args) {
     try {
-	      // Create a server socket
+	      // Yo Eva :))
 	      ServerSocket serverSocket = new ServerSocket(8000);
 	     System.out.println("Loan Server started at " + new Date() + '\n');
 
