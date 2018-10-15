@@ -1,58 +1,29 @@
+import java.io.PrintStream;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.Date;
+import java.util.Scanner;
 
 public class Server {
-	public static void main(String[] args) {
-    try {
-	      //bøgse
-	      ServerSocket serverSocket = new ServerSocket(8000);
-	     System.out.println("Loan Server started at " + new Date() + '\n');
+public static void main(String args[]) {
+	new Thread(() -> {
+			int client = 0;
+			try {
+				// Creating ServerSocket and Socket
+				ServerSocket server = new ServerSocket(4000);
 
-	      Socket connectToClient = serverSocket.accept();
+				while (true) {
+					Socket socket = server.accept();
+					client++;
+					
+					new Thread(new MultiThread(socket)).start();
+					System.out.println("New Client");
+				}
+			} catch (Exception e) {
 
-	      // Display the client number
-	      System.out.println("Connected to a client " + " at " + new Date() + '\n');
+			}
+		}).start();
+		
+	}
 
-	      // Create data input and output streams
-	      DataInputStream isFromClient = new DataInputStream(
-	        connectToClient.getInputStream());
-	      DataOutputStream osToClient = new DataOutputStream(
-	        connectToClient.getOutputStream());
-
-	      // Continuously serve the client
-	      while (true) {
-	        // Receive annual interest rate from the client
-	        double annualInterestRate = isFromClient.readDouble();
-
-	        // Receive number of years f6hhurom the client
-	        int numOfYears = isFromClient.readInt();
-
-	        // Receive loan from the client
-	        double loanAmount = isFromClient.readDouble();
-
-	        // Compute monthly payment and total payment
-	        double monthlyInterestRate = annualInterestRate / 1200;
-	        double monthlyPayment = loanAmount * monthlyInterestRate / (1 - (1 / Math.pow(1 + monthlyInterestRate, numOfYears * 12)));
-	        
-	        double totalPayment = monthlyPayment * numOfYears * 12;
-	        // Send results back to the client
-	        osToClient.writeDouble(monthlyPayment);
-	        osToClient.writeDouble(totalPayment);
-
-	        System.out.println("Annual Interest Rate: " + annualInterestRate +
-	          "\nNumber of Years: " + numOfYears + "\nLoan Amount: " +
-	          loanAmount + "\n");
-	        System.out.println("monthlyPayment: " + monthlyPayment + " " +
-	          "\ntotalPayment: " + totalPayment + '\n');
-	        
-	      }
-	    }
-	    catch(IOException e) {
-	      System.err.println(e);
-	    }
-	  }
-	  
-	
 }
