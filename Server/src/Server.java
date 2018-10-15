@@ -6,7 +6,7 @@ import java.util.Date;
 public class Server {
 	public static void main(String[] args) {
     try {
-	      //Eåwaåu
+	      //bøgse
 	      ServerSocket serverSocket = new ServerSocket(8000);
 	     System.out.println("Loan Server started at " + new Date() + '\n');
 
