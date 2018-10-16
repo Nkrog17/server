@@ -18,10 +18,7 @@ public static void main(String args[]) {
 					
 					new Thread(new PlayerThread(socket)).start();
 					System.out.println("Client connected to game server!");
-<<<<<<< HEAD
-				
-=======
->>>>>>> branch 'master' of https://github.com/Nkrog17/server.git
+					
 				}
 			} catch (Exception e) {
 
