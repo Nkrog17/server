@@ -3,10 +3,10 @@ import java.io.DataOutputStream;
 import java.io.IOException;
 import java.net.*;
 
-public class MultiThread implements Runnable {
+public class PlayerThread implements Runnable {
 	private Socket socket;
 
-	public MultiThread(Socket socket) {
+	public PlayerThread(Socket socket) {
 		this.socket = socket;
 	}
 
