@@ -5,30 +5,34 @@ import java.net.Socket;
 import java.util.Scanner;
 
 public class Server {
+	public static int numberOfPlayers=0;
 public static void main(String args[]) {
 	new Thread(() -> {
-			int client = 0;
+			
 			try {
 				// Creating ServerSocket and Socket
-				ServerSocket server = new ServerSocket(8867);
+				ServerSocket server = new ServerSocket(6000);
 
 				while (true) {
 					Socket socket = server.accept();
-					client++;
+					
 					
 					new Thread(new PlayerThread(socket)).start();
 
-					System.out.println("Client connected to game!");
+			
 				
-
+					numberOfPlayers++;
 					
 					
 
 				}
+				
+				
 			} catch (Exception e) {
 
 			}
 		}).start();
+	
 		
 	}
 
