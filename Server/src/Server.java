@@ -17,7 +17,7 @@ public static void main(String args[]) {
 					client++;
 					
 					new Thread(new PlayerThread(socket)).start();
-					System.out.println("New Client");
+					System.out.println("Client connected to game server!");
 				}
 			} catch (Exception e) {
 
