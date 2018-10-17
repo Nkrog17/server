@@ -6,8 +6,6 @@ import java.net.*;
 public class PlayerThread implements Runnable {
 	private Socket socket;
 	public String playerName;	
-	
-	DataOutputStream toClient;
 
 	public PlayerThread(Socket socket) {
 		this.socket = socket;
@@ -18,7 +16,6 @@ public class PlayerThread implements Runnable {
 		try {
 			
 			DataInputStream fromClient = new DataInputStream(socket.getInputStream());
-			DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());
 			
 			playerName=fromClient.readUTF();
 			System.out.println(playerName+ " connected to game!");
@@ -27,9 +24,10 @@ public class PlayerThread implements Runnable {
 			Server.updateClients();
 			
 			while (true) {
+				//Fetch string from client
 				String message = fromClient.readUTF();
+				//Send string to Server class
 				Server.sendToAllClients(message);
-				
 			}
 			
 		} catch(IOException e) {}
@@ -37,7 +35,9 @@ public class PlayerThread implements Runnable {
 	}
 	
 	public void sendMessage(String message) throws IOException {
-		toClient.writeUTF(message);
+		//Send the message to this client.
+		DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());		
+		toClient.writeUTF(playerName + ": " + message); //playerName skal flyttes væk herfra - ellers er alle navne ens eget.
 	}
 		
 	}

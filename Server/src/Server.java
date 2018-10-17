@@ -24,6 +24,7 @@ public static void main(String args[]) {
 						Thread thisThread = new Thread(thisObject);
 						thisThread.start();
 						
+						//accessStuff is used to access functions within a thread's object.
 						accessStuff[numberOfPlayers] = thisObject;
 						numberOfPlayers++;
 						thisThread.setName("Client " + Integer.toString(numberOfPlayers));
@@ -41,28 +42,29 @@ public static void main(String args[]) {
 	}
 
 public static void updateClients() {
+	//Get all active threads and convert to array
 	Set<Thread> threadSet = Thread.getAllStackTraces().keySet();
 	Thread[] threadArray = threadSet.toArray(new Thread[threadSet.size()]);
 	
 	Thread[] tempClients = new Thread[numberOfPlayers];
 	int index = 0;
 	
-	
+	//Check each thread and if thread is a client, append to tempClients
 	for(int i = 0; i<threadArray.length; i++) {
 		if(threadArray[i].getName().substring(0, 6).equals("Client")) {
 			tempClients[index] = threadArray[i];
 			index++;
 		}
 	}
+	//Make the connected clients static and public.
 	connectedClients = tempClients;
 }
 
 public static void sendToAllClients(String string) throws IOException {
-	for(int i = 0; i<accessStuff.length; i++) {
-		System.out.println(accessStuff);
+	//Send message to each connected client
+	for(int i = 0; i<numberOfPlayers; i++) {
 		accessStuff[i].sendMessage(string);
 	}
-	//toClient.writeUTF(message);
 }
 
 }
