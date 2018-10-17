@@ -18,12 +18,8 @@ public static void main(String args[]) {
 					
 					
 					new Thread(new PlayerThread(socket)).start();
-
-			
-				
+					
 					numberOfPlayers++;
-					
-					
 
 				}
 				
