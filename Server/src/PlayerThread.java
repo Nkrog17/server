@@ -6,6 +6,8 @@ import java.net.*;
 public class PlayerThread implements Runnable {
 	private Socket socket;
 	public String playerName;	
+	
+	DataOutputStream toClient;
 
 	public PlayerThread(Socket socket) {
 		this.socket = socket;
@@ -22,14 +24,20 @@ public class PlayerThread implements Runnable {
 			System.out.println(playerName+ " connected to game!");
 			System.out.println("The total number of connected players is now: "+Server.numberOfPlayers);
 			
+			Server.updateClients();
+			
 			while (true) {
 				String message = fromClient.readUTF();
+				Server.sendToAllClients(message);
 				
-				toClient.writeUTF(message);				
 			}
 			
 		} catch(IOException e) {}
 		System.out.println(this.playerName+ " has left the game");
+	}
+	
+	public void sendMessage(String message) throws IOException {
+		toClient.writeUTF(message);
 	}
 		
 	}
