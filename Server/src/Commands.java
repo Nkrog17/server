@@ -13,24 +13,43 @@ public class Commands {
 	public static final String ANSI_WHITE = "\u001B[37m";
 	
 	String checkString(String string) {
-		if(string.charAt(0) != '/')
-			return string;
 		
-		else if(string.substring(0, 7).equals("/yellow "))
-			string = yellowString(string);
-		
-		else if(string.substring(0, 4).equals("/red "))
-			string = redString(string);
-		
-		else if(string.substring(0, 6).equals("/green "))
-			string = greenString(string);
-		
-		else if(string.substring(0, 5).equals("/blue "))
-			string = blueString(string);
-		
-		else if(string.equals("/joke"))
-			string = jokeString();
+		if(string.length()>1) {
+			if(string.charAt(0) != '/') {
+				return string;
+			}
 			
+			else if(string.length() >= 8 && string.substring(0, 8).equals("/yellow ")) {
+				System.out.println("HEY");
+				string = yellowString(string.substring(7, string.length()));
+			}
+			
+			else if(string.length() >= 5 && string.substring(0, 5).equals("/red ")) {
+				string = redString(string.substring(4,string.length()));
+			}
+			
+			else if(string.length() >= 7 && string.substring(0, 7).equals("/green ")) {
+				string = greenString(string.substring(6,string.length()));
+			}
+			
+			else if(string.length() >= 6 && string.substring(0, 6).equals("/blue ")) {
+				string = blueString(string.substring(5,string.length()));
+			}
+			
+			else if(string.equals("/joke")) {
+				string = jokeString();
+			}
+			
+			else if(string.equals("/help")) {
+				string = helpString();
+			}
+			
+			else {
+				string = "Command not recognized. Type /help for help.";
+			}
+			
+			return string;
+		}
 		return string;
 	}
 	
@@ -55,6 +74,8 @@ public class Commands {
 		int myInt = rand.nextInt(3);
 		String output = "No jokes today.";
 		
+		
+		
 		if(myInt == 0)
 			output = "What do you call a fish with no eyes? - A fsh.";
 		else if(myInt == 1)
@@ -65,6 +86,18 @@ public class Commands {
 			output = "You should never let your children play in an orchestra! There's too much sax and violins.";
 		
 		return output;
+	}
+	
+	String helpString() {
+		String help = "-- List of commands --\n"
+				+ "/help - shows list of commands.\n"
+				+ "/joke - server tells a joke.\n"
+				+ "/red <msg> - message appears in red.\n"
+				+ "/yellow <msg> - message appears in yellow.\n"
+				+ "/green <msg> - message appears in green.\n"
+				+ "/blue <msg> message appears in blue.\n";
+		
+		return help;
 	}
 	
 	

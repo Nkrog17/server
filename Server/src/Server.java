@@ -7,7 +7,8 @@ import java.util.Set;
 public class Server {
 	public static int numberOfPlayers=0;
 	public static Thread [] connectedClients = new Thread[6];
-	public static PlayerThread [] accessStuff = new PlayerThread[6]; 
+	public static PlayerThread [] accessStuff = new PlayerThread[6];
+	public static Commands commands = new Commands();
 	
 public static void main(String args[]) {
 	new Thread(() -> {
@@ -17,7 +18,7 @@ public static void main(String args[]) {
 				ServerSocket server = new ServerSocket(6000);
 
 				while (true) {
-					if(numberOfPlayers < 6) {
+					if(numberOfPlayers != 6) {
 						Socket socket = server.accept();
 						
 						PlayerThread thisObject = new PlayerThread(socket);
@@ -60,11 +61,21 @@ public static void updateClients() {
 	connectedClients = tempClients;
 }
 
-public static void sendToAllClients(String string) throws IOException {
+public static void sendToAllClients(String string, String name) throws IOException {
 	//Send message to each connected client
+	//string = commands.checkString(string);
+	string = commands.checkString(string);
+	
 	for(int i = 0; i<numberOfPlayers; i++) {
-		accessStuff[i].sendMessage(string);
+		accessStuff[i].sendMessage(name + ": " + string);
 	}
+	System.out.println(name + ": " + string);
+}
+
+public static void disconnectClient(String name) {
+	System.out.println(name + " has left the chat.");
+	numberOfPlayers --;
+	System.out.println("The total number of connected clients is now: " + numberOfPlayers);
 }
 
 }

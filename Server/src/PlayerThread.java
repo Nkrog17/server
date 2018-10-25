@@ -17,9 +17,9 @@ public class PlayerThread implements Runnable {
 			
 			DataInputStream fromClient = new DataInputStream(socket.getInputStream());
 			
-			playerName=fromClient.readUTF();
-			System.out.println(playerName+ " connected to game!");
-			System.out.println("The total number of connected players is now: "+Server.numberOfPlayers);
+			playerName = fromClient.readUTF();
+			System.out.println(playerName + " connected to game!");
+			System.out.println("The total number of connected players is now: " + Server.numberOfPlayers);
 			
 			Server.updateClients();
 			
@@ -27,17 +27,17 @@ public class PlayerThread implements Runnable {
 				//Fetch string from client
 				String message = fromClient.readUTF();
 				//Send string to Server class
-				Server.sendToAllClients(message);
+				Server.sendToAllClients(message, playerName);
 			}
 			
 		} catch(IOException e) {}
-		System.out.println(this.playerName+ " has left the game");
+			Server.disconnectClient(playerName);
 	}
 	
 	public void sendMessage(String message) throws IOException {
 		//Send the message to this client.
 		DataOutputStream toClient = new DataOutputStream(socket.getOutputStream());		
-		toClient.writeUTF(playerName + ": " + message); //playerName skal flyttes væk herfra - ellers er alle navne ens eget.
+		toClient.writeUTF(message);
 	}
 		
 	}
