@@ -137,7 +137,7 @@ String progress() {
 		}
 	}
 	//Returns the progress of the word you try to guess and a guide that shows the user how to guess another one.
-	return "Your hangman word is: " + wordShown + " \n To guess, write a letter with a '!' in front. Example: '!x'";
+	return "Your hangman word is: " + wordShown + " \nTo guess, write a letter with a '!' in front. Example: '!x'";
 }
 
 //Making a method to determine whether all booleans in a boolean array are true.
