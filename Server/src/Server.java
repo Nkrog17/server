@@ -71,7 +71,7 @@ public static void updateClients() {
 public static void sendToAllClients(String string, String name) throws IOException {
 	//Send message to each connected client
 	//string = commands.checkString(string);
-	string = commands.checkString(string);
+	string = commands.checkString(string, name);
 	
 	for(int i = 0; i<numberOfPlayers; i++) {
 		accessStuff[i].sendMessage(name + ": " + string);

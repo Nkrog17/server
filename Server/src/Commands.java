@@ -12,7 +12,7 @@ public class Commands {
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
 	
-	String checkString(String string) {
+	String checkString(String string, String name) {
 		//to avoid checking empty strings or strings with only '/', the length has to be at least 2
 		if(string.length()>1) {
 			if(string.charAt(0) != '/' && string.charAt(0) != '!') {
@@ -59,6 +59,10 @@ public class Commands {
 			}
 			else if(string.equals("/roll")) {
 				string = rollNumber();
+			}
+			
+			else if(string.substring(0, 8).equals("/rename ")) {
+				string = renamePlayer(string.substring(7, string.length()), name);				
 			}
 
 			else {
@@ -114,7 +118,8 @@ public class Commands {
 				+ "/green <msg> - message appears in green.\n"
 				+ "/blue <msg> message appears in blue.\n"
 				+ "/hangman - starts a new hangman game. \n"
-				+ "!<char> - guesses char in hangman game. \n";
+				+ "!<char> - guesses char in hangman game. \n"
+				+ "/rename <name> - change your name. \n";
 		
 		return help;
 	}
@@ -125,6 +130,15 @@ public class Commands {
 		return myInt1;
 	}
 	
-	
+	String renamePlayer(String newName, String oldName) {
+		for(int i = 0; i<Server.numberOfPlayers; i++) {
+			if(Server.accessStuff[i].playerName.equals(oldName)) {
+				Server.accessStuff[i].playerName = newName;
+				break;
+			}
+		}
+				
+		return oldName + " changed their name to " + newName;
+	}
 
 }
