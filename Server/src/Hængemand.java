@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Random;
 
 public class Hængemand {
@@ -90,8 +91,9 @@ String guessLetter(String guessedInput) {
 					output = "Good guess! It is correct! You now have " + correctlyGuessedLetters + " letters correctly guessed";
 				
 					System.out.println("Good guess! It is correct! You now have " + correctlyGuessedLetters + " letters correctly guessed");
-					return output;
+					
 				}	
+				
 				}
 				}else {
 					//If letterGuessed is wrong output is set to this String:
@@ -101,23 +103,18 @@ String guessLetter(String guessedInput) {
 					System.out.println("Too bad. The letter " + guessedLetter + " is not in the word you are trying to guess.");
 					//Each time a guess is made it shows progress in the end.
 					this.progress();
-					return output;
+					
 			}
 
-			
+	
 
 	}
+	this.progress();
 	return output;
 }// end of guessLetter class
 
 
 String progress() {
-	//Making a variable to contain what we want to return.
-	String returnString1;
-	String returnString2;
-	//Since we want to return 2 strings we need an array
-	String[] returnStrings = new String[2];
-
 	//If all the letters have been guessed the client has won the game and hangmanStarted is false since there is currently no Hangman game happening.
 	if(areAllTrue(booleanArray)){
 		hangmanStarted = false;
@@ -132,14 +129,15 @@ String progress() {
 			}else {
 				wordShown = wordShown + '_' + ' ';
 			}
+			
 		}
 		
-
 		System.out.println("Your hangman word is: " + wordShown);
 		System.out.println("To guess write a letter with a '!' in front. Example: '!x'.");
-		
+
 		
 	}
+
 	return "Your hangman word is: " + wordShown + " \n To guess, write a letter with a '!' in front. Example: '!x'";
 }
 
@@ -157,6 +155,6 @@ public static void main(String [ ] args) {
 	hangman.newGame();
 	
 	hangman.guessLetter("!e");
-
+	System.out.println(Arrays.toString(hangman.booleanArray));
 	}
 }

@@ -56,6 +56,10 @@ public class Commands {
 					string = "A game of Hangman is already happening";
 				}
 			}
+			//Implements the guessing command for when a hangman game is ongoing. If the command is 2 letters long and starts with '!' it's a guess.
+			else if(string.length() == 2 && string.substring(0,1) == "!") {
+				string = Server.hangman.guessLetter(string);
+			}
 			
 			else if(string.equals("/quit")) {
 				quitBoolean = true;
