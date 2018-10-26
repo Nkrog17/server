@@ -63,7 +63,7 @@ String newGame() {
 	booleanArray = new boolean[charArray.length];
 	
 	//Returns welcome message and the progress method to know how many letters are in the word.
-	return "Welcome to hangman \n " + this.progress() ;
+	return "Welcome to hangman \n" + this.progress() ;
 	}
 	else {
 	//Returns if a game is currently being played
@@ -112,7 +112,7 @@ String guessLetter(String guessedInput) {
 			}
 	}
 	//returns the output message (whether or not the letter is in the word) and then returns progress.
-	return output + "\n " + this.progress();
+	return output + "\n" + this.progress();
 	} else {
 		return "There is currently no Hangman game being played. type /Hangman to start a game";
 	}
