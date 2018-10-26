@@ -102,7 +102,6 @@ String guessLetter(String guessedInput) {
 					
 					System.out.println("Too bad. The letter " + guessedLetter + " is not in the word you are trying to guess.");
 					//Each time a guess is made it shows progress in the end.
-					this.progress();
 					
 			}
 
@@ -110,7 +109,7 @@ String guessLetter(String guessedInput) {
 
 	}
 	this.progress();
-	return output;
+	return this.progress() + "\n " + output;
 }// end of guessLetter class
 
 

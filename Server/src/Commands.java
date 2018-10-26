@@ -16,7 +16,7 @@ public class Commands {
 	String checkString(String string) {
 		
 		if(string.length()>1) {
-			if(string.charAt(0) != '/') {
+			if(string.charAt(0) != '/' || string.charAt(0) != '!') {
 				return string;
 			}
 			
@@ -58,7 +58,7 @@ public class Commands {
 			}
 			//Implements the guessing command for when a hangman game is ongoing. If the command is 2 letters long and starts with '!' it's a guess.
 			else if(string.length() == 2 && string.substring(0,1) == "!") {
-				string = Server.hangman.guessLetter(string);
+				string = Server.hangman.guessLetter(string) + "\n " + Server.hangman.progress();
 			}
 			
 			else if(string.equals("/quit")) {
