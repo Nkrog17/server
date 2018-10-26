@@ -15,7 +15,7 @@ public static void main(String args[]) {
 			
 			try {
 				// Creating ServerSocket and Socket
-				ServerSocket server = new ServerSocket(6000);
+				ServerSocket server = new ServerSocket(7700);
 
 				while (true) {
 					if(numberOfPlayers != 6) {
