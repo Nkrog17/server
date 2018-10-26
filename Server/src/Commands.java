@@ -55,8 +55,8 @@ public class Commands {
 				string = Server.hangman.guessLetter(string);
 			}
 			
-			else if(string.equals("/quit")) {
-				quitBoolean = true;
+			else if(string.equalsIgnoreCase("/tsampikos")) {
+				string = "okay, cul";
 			}
 
 			else {
