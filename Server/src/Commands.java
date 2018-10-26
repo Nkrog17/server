@@ -45,8 +45,16 @@ public class Commands {
 				string = helpString();
 			}
 
+			//Implements the command /hangman to start a game of hangman.
 			else if(string.equals("/hangman")) {
-				
+				//Starts a new hangman game.
+				if(Server.hangman.hangmanStarted == false) {
+					//Prints the return of newGame() to all clients. This is first a welcome message and then the progress.
+					string = Server.hangman.newGame();
+				}else {
+					//Prints this string to all clients.
+					string = "A game of Hangman is already happening";
+				}
 			}
 			
 			else if(string.equals("/quit")) {

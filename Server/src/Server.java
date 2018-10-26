@@ -10,8 +10,11 @@ public class Server {
 	public static PlayerThread [] accessStuff = new PlayerThread[6];
 	public static Commands commands = new Commands();
 	
+	static Hængemand hangman;
+	
 public static void main(String args[]) {
-	Hængemand hangman = new Hængemand();
+	hangman = new Hængemand();
+	
 	new Thread(() -> {
 			
 			try {
