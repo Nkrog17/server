@@ -11,6 +11,7 @@ public class Commands {
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
+	public static boolean quitBoolean = false;
 	
 	String checkString(String string) {
 		
@@ -43,10 +44,16 @@ public class Commands {
 			else if(string.equals("/help")) {
 				string = helpString();
 			}
+<<<<<<< HEAD
 			else if(string.equals("/hangman")) {
 				
 			}
 			
+=======
+			else if(string.equals("/quit")) {
+				quitBoolean = true;
+			}
+>>>>>>> 37c867ea3c142808e0aa12b178d772c45245365a
 			else {
 				string = "Command not recognized. Type /help for help.";
 			}

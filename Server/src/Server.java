@@ -11,11 +11,12 @@ public class Server {
 	public static Commands commands = new Commands();
 	
 public static void main(String args[]) {
+	Hængemand hangman = new Hængemand();
 	new Thread(() -> {
 			
 			try {
 				// Creating ServerSocket and Socket
-				ServerSocket server = new ServerSocket(6000);
+				ServerSocket server = new ServerSocket(7700);
 
 				while (true) {
 					if(numberOfPlayers != 6) {
