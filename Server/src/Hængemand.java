@@ -45,8 +45,6 @@ void populateArray() {
 
 String newGame() {
 	if(hangmanStarted == false) {
-	//Introduction message:
-	System.out.println("You have started a new game of Hangman. Good luck!");
 	//Makes the boolean true that the game is started and there can be no more started games before this one has ended.
 	hangmanStarted = true;
 	
@@ -58,16 +56,17 @@ String newGame() {
 	int myInt = rand.nextInt(words.length - 1) + 0;
 	//Picks a random word from the words array that will be used as the word to guess later on. A number between 0 and the length of the words array.
 	wordUsed = words[myInt];
-	System.out.println(wordUsed);
 	//Makes an array of Chars out of the word picked.
 	charArray = wordUsed.toCharArray();
 	
 	//Makes a boolean array with same amount of booleans as there are letters in the word. Will be used to determine which letters are guessed and which aren't.
 	booleanArray = new boolean[charArray.length];
 	
+	//Returns welcome message and the progress method to know how many letters are in the word.
 	return "Welcome to hangman \n " + this.progress() ;
 	}
 	else {
+	//Returns if a game is currently being played
 	return "A game of hangman is already happening";
 	}
 	
@@ -102,7 +101,7 @@ String guessLetter(String guessedInput) {
 					//If the letter is correctly guessed the output is set to this String.
 					output = "Good guess! It is correct! You now have " + correctlyGuessedLetters + " letters correctly guessed";
 				
-					System.out.println("Good guess! It is correct! You now have " + correctlyGuessedLetters + " letters correctly guessed");
+				
 					
 				}	
 				
@@ -110,17 +109,9 @@ String guessLetter(String guessedInput) {
 				}else {
 					//If letterGuessed is wrong output is set to this String:
 					output = "Too bad. The letter " + guessedLetter + " is not in the word you are trying to guess.";
-				
-					
-					System.out.println("Too bad. The letter " + guessedLetter + " is not in the word you are trying to guess.");
-					//Each time a guess is made it shows progress in the end.
-					
 			}
-
-	
-
 	}
-	this.progress();
+	//returns the output message (whether or not the letter is in the word) and then returns progress.
 	return output + "\n " + this.progress();
 	} else {
 		return "There is currently no Hangman game being played. type /Hangman to start a game";
@@ -143,16 +134,10 @@ String progress() {
 				//If the letter is not guessed yet there will be a "_" and a space after it.
 			}else {
 				wordShown = wordShown + '_' + ' ';
-			}
-			
+			}	
 		}
-		
-		System.out.println("Your hangman word is: " + wordShown);
-		System.out.println("To guess write a letter with a '!' in front. Example: '!x'.");
-
-		
 	}
-
+	//Returns the progress of the word you try to guess and a guide that shows the user how to guess another one.
 	return "Your hangman word is: " + wordShown + " \n To guess, write a letter with a '!' in front. Example: '!x'";
 }
 
@@ -163,13 +148,4 @@ public static boolean areAllTrue(boolean[] array)
     return true;
 }
 
-public static void main(String [ ] args) {
-	//The object every method is used upon. Made so everything does not have to be static.
-	Hængemand hangman = new Hængemand();
-	//Should be called evertime a new game is made. (In the /Hangman command probably.
-	hangman.newGame();
-	
-	hangman.guessLetter("!e");
-	System.out.println(Arrays.toString(hangman.booleanArray));
-	}
-}
+} // end of hængemand class
