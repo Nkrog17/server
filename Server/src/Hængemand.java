@@ -3,7 +3,7 @@ import java.util.Random;
 
 public class Hængemand {
 //String array with all the words to choose from when randomly selecting a word.
-String[] words = new String[7];
+String[] words = new String[14];
 
 //An array that makes the string seperate into chars
 char[] charArray;
@@ -34,6 +34,13 @@ void populateArray() {
 	words[4] = "warcraft";
 	words[5] = "spaghetti";
 	words[6] = "leech";
+	words[7] = "tsampikos";
+	words[8] = "evangelia";
+	words[9] = "childish";
+	words[10] = "shaman";
+	words[11] = "healing";
+	words[12] = "lasagna";
+	words[13] = "bug";
 }
 
 String newGame() {
@@ -67,6 +74,7 @@ String newGame() {
 }
 
 String guessLetter(String guessedInput) {
+	if(hangmanStarted) {
 	if(guessedInput.length() == 2 && guessedInput.charAt(0) == '!' && hangmanStarted == true){
 		//Making a string and a char for the input aka. the guessed letter.
 		char guessedLetter;
@@ -113,7 +121,10 @@ String guessLetter(String guessedInput) {
 
 	}
 	this.progress();
-	return this.progress() + "\n " + output;
+	return output + "\n " + this.progress();
+	} else {
+		return "There is currently no Hangman game being played. type /Hangman to start a game";
+	}
 }// end of guessLetter class
 
 
@@ -122,6 +133,7 @@ String progress() {
 	if(areAllTrue(booleanArray)){
 		hangmanStarted = false;
 		System.out.println("Congratulations! You guessed the word! The word you guessed was: " + wordUsed);
+		return "Congratulations you guessed the word! The word you guessed was: " + wordUsed;
 	} else if(!(areAllTrue(booleanArray))) {
 		wordShown = "";
 		for(int i = 0; i < booleanArray.length; i++) {
