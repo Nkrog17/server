@@ -11,15 +11,14 @@ public class Commands {
 	public static final String ANSI_PURPLE = "\u001B[35m";
 	public static final String ANSI_CYAN = "\u001B[36m";
 	public static final String ANSI_WHITE = "\u001B[37m";
-	public static boolean quitBoolean = false;
 	
 	String checkString(String string) {
-		
+		//to avoid checking empty strings or strings with only '/', the length has to be at least 2
 		if(string.length()>1) {
 			if(string.charAt(0) != '/' && string.charAt(0) != '!') {
 				return string;
 			}
-			
+			//colour codes, does not work 
 			else if(string.length() >= 8 && string.substring(0, 8).equals("/yellow ")) {
 				System.out.println("HEY");
 				string = yellowString(string.substring(7, string.length()));
@@ -36,11 +35,11 @@ public class Commands {
 			else if(string.length() >= 6 && string.substring(0, 6).equals("/blue ")) {
 				string = blueString(string.substring(5,string.length()));
 			}
-			
+			//checks if the user writes '/joke', and will send a joke from jokeString
 			else if(string.equals("/joke")) {
 				string = jokeString();
 			}
-			
+			//checks if the user writes '/help', and will send a help list from jokeString
 			else if(string.equals("/help")) {
 				string = helpString();
 			}
@@ -54,9 +53,12 @@ public class Commands {
 			else if(string.length() == 2 && string.charAt(0) == '!') {
 				string = Server.hangman.guessLetter(string);
 			}
-			
+			//tsampikos okay cul command
 			else if(string.equalsIgnoreCase("/tsampikos")) {
 				string = "okay, cul";
+			}
+			else if(string.equals("/roll")) {
+				string = rollNumber();
 			}
 
 			else {
@@ -83,7 +85,7 @@ public class Commands {
 	String blueString(String string) {
 		return ANSI_BLUE + string + ANSI_RESET;
 	}
-	
+	//creates jokes
 	String jokeString() {
 		Random rand = new Random();
 		int myInt = rand.nextInt(3);
@@ -115,6 +117,12 @@ public class Commands {
 				+ "!<char> - guesses char in hangman game. \n";
 		
 		return help;
+	}
+	String rollNumber() {
+		Random rand = new Random();
+		int myInt = rand.nextInt(99)+1;
+		String myInt1 = ""+myInt;
+		return myInt1;
 	}
 	
 	
