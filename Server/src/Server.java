@@ -11,9 +11,12 @@ public class Server {
 	public static Commands commands = new Commands();
 	
 	static Hængemand hangman;
+	static ipAdress ipAdresse;
 	
-public static void main(String args[]) {
+public static void main(String args[]) throws Exception {
 	hangman = new Hængemand();
+	ipAdresse = new ipAdress();
+	ipAdresse.getIpAdress();
 	
 	new Thread(() -> {
 			
