@@ -14,6 +14,7 @@ public class Commands {
 	public static int myInt;
 	public static String myIntString;
 	public static boolean numberGameStarted = false;
+	int clientNumber;
 
 	String checkString(String string, String name) {
 		// to avoid checking empty strings or strings with only '/', the length has to
@@ -50,6 +51,7 @@ public class Commands {
 
 			// Implements the command /hangman to start a game of hangman.
 			else if (string.equals("/hangman")) {
+				System.out.println("Abekat");
 				// Starts a new hangman game.
 				string = Server.hangman.newGame();
 			}
@@ -61,26 +63,19 @@ public class Commands {
 			// tsampikos okay cul command
 			else if (string.equalsIgnoreCase("/tsampikos")) {
 				string = "okay, cul";
-			} else if (string.equals("/roll")) {
+			} 
+			else if (string.equals("/roll")) {
 				string = rollNumber();
-			} else if (string.equals("/numbergame")) {
-				if (numberGameStarted = false) {
-					string = startNumberGame();
-				} else {
-					string = "A numbergame is already running";
-				}
+			} 
+			
+			//Does not work properly
+			/*else if (string.equals("/numbergame")) {
+				string = startNumberGame();
+				
 
-			} else if (string.charAt(0) == '#') {
-				int clientNumber = Integer.parseInt(string.substring(1));
-				if (clientNumber == myInt) {
-					string = "You guessed the number correctly, good job!";
-					numberGameStarted = false;
-				} else if (clientNumber < myInt) {
-					string = "The number you are looking for is higher than that!";
-				} else if (clientNumber > myInt) {
-					string = "The number you are looking for is lower than that!";
-				}
-			}
+			} else if (string.substring(0,1).equals("-")) {
+				System.out.println("Hejsa nu er du her!");
+			 } */
 
 			else if (string.substring(0, 8).equals("/rename ")) {
 				string = renamePlayer(string.substring(8, string.length()), name);
@@ -146,13 +141,19 @@ public class Commands {
 		return myInt1;
 	}
 
-	String startNumberGame() {
-		numberGameStarted = true;
-		Random rand = new Random();
-		myInt = rand.nextInt(99) + 1;
-		myIntString = "" + myInt;
-		return "You have started the numbergame, guess the number the server thinks of!";
-	}
+	
+	//Still does not work properly
+	/*String startNumberGame() {
+		if(numberGameStarted == false) {
+			Random rand = new Random();
+			myInt = rand.nextInt(99) + 1;
+			numberGameStarted = true;
+			return "You have started the numbergame, guess the number the server thinks of by writing #number" + myInt;
+		}else {
+			return "Numbergame already running";
+		}
+
+	} */
 
 	String renamePlayer(String newName, String oldName) {
 		for (int i = 0; i < Server.numberOfPlayers; i++) {
