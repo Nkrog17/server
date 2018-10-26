@@ -16,7 +16,7 @@ public class Commands {
 	String checkString(String string) {
 		
 		if(string.length()>1) {
-			if(string.charAt(0) != '/' || string.charAt(0) != '!') {
+			if(string.charAt(0) != '/' && string.charAt(0) != '!') {
 				return string;
 			}
 			
