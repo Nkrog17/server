@@ -62,7 +62,7 @@ public class Commands {
 			}
 			
 			else if(string.substring(0, 8).equals("/rename ")) {
-				string = renamePlayer(string.substring(7, string.length()), name);				
+				string = renamePlayer(string.substring(8, string.length()), name);				
 			}
 
 			else {

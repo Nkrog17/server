@@ -22,7 +22,7 @@ public static void main(String args[]) throws Exception {
 			
 			try {
 				// Creating ServerSocket and Socket
-				ServerSocket server = new ServerSocket(7700);
+				ServerSocket server = new ServerSocket(8000);
 
 				while (true) {
 					if(numberOfPlayers != 6) {
