@@ -123,7 +123,6 @@ String progress() {
 	//If all the letters have been guessed the client has won the game and hangmanStarted is false since there is currently no Hangman game happening.
 	if(areAllTrue(booleanArray)){
 		hangmanStarted = false;
-		System.out.println("Congratulations! You guessed the word! The word you guessed was: " + wordUsed);
 		return "Congratulations you guessed the word! The word you guessed was: " + wordUsed;
 	} else if(!(areAllTrue(booleanArray))) {
 		wordShown = "";
