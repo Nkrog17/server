@@ -110,7 +110,9 @@ public class Commands {
 				+ "/red <msg> - message appears in red.\n"
 				+ "/yellow <msg> - message appears in yellow.\n"
 				+ "/green <msg> - message appears in green.\n"
-				+ "/blue <msg> message appears in blue.\n";
+				+ "/blue <msg> message appears in blue.\n"
+				+ "/hangman - starts a new hangman game. \n"
+				+ "!<char> - guesses char in hangman game. \n";
 		
 		return help;
 	}
