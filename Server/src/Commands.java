@@ -43,6 +43,9 @@ public class Commands {
 			else if(string.equals("/help")) {
 				string = helpString();
 			}
+			else if(string.equals("/hangman")) {
+				
+			}
 			
 			else {
 				string = "Command not recognized. Type /help for help.";
