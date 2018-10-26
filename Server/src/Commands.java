@@ -104,7 +104,7 @@ public class Commands {
 		else if(myInt == 2)
 			output = "What are penguins' favorite relative? Aunt Arctica.";
 		else if(myInt == 3)
-			output = "You should never let your children play in an orchestra! There's too much sax and violins.";
+			output = "You should never let your children play in an orchestra! There's too much sax and violins and tromBONING.";
 		
 		return output;
 	}
