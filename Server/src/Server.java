@@ -24,7 +24,7 @@ public static void main(String args[]) {
 				while (true) {
 					if(numberOfPlayers != 6) {
 						Socket socket = server.accept();
-						
+						//Assigns a thread to a client
 						PlayerThread thisObject = new PlayerThread(socket);
 						Thread thisThread = new Thread(thisObject);
 						thisThread.start();
@@ -77,6 +77,7 @@ public static void sendToAllClients(String string, String name) throws IOExcepti
 }
 
 public static void disconnectClient(String name) {
+	//controls if players leave the channel
 	System.out.println(name + " has left the chat.");
 	numberOfPlayers --;
 	System.out.println("The total number of connected clients is now: " + numberOfPlayers);
