@@ -28,10 +28,10 @@ public class PlayerThread implements Runnable {
 				String message = fromClient.readUTF();
 				//Send string to Server class
 				Server.sendToAllClients(message, playerName);
-				if(Commands.quitBoolean = true) {
+				if(message.equals("/quit")) {
 					System.out.println("Player has quit");
 					if(Thread.currentThread().isAlive()) {
-						sendMessage("b00ejjk");
+						//sendMessage("b00ejjk");
 						return;
 					}
 				}

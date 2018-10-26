@@ -11,6 +11,7 @@ public class Server {
 	public static Commands commands = new Commands();
 	
 public static void main(String args[]) {
+	Hængemand hangman = new Hængemand();
 	new Thread(() -> {
 			
 			try {
