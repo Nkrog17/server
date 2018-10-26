@@ -37,6 +37,7 @@ void populateArray() {
 }
 
 String newGame() {
+	if(hangmanStarted == false) {
 	//Introduction message:
 	System.out.println("You have started a new game of Hangman. Good luck!");
 	//Makes the boolean true that the game is started and there can be no more started games before this one has ended.
@@ -58,7 +59,10 @@ String newGame() {
 	booleanArray = new boolean[charArray.length];
 	
 	return "Welcome to hangman \n " + this.progress() ;
-
+	}
+	else {
+	return "A game of hangman is already happening";
+	}
 	
 }
 
