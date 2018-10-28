@@ -10,11 +10,11 @@ public class Server {
 	public static PlayerThread [] accessStuff = new PlayerThread[6];
 	public static Commands commands = new Commands();
 	
-	static Hængemand hangman;
+	static HÃ¦ngemand hangman;
 	static ipAdress ipAdresse;
 	
 public static void main(String args[]) throws Exception {
-	hangman = new Hængemand();
+	hangman = new HÃ¦ngemand();
 	ipAdresse = new ipAdress();
 	ipAdresse.getIpAdress();
 	
@@ -83,6 +83,7 @@ public static void disconnectClient(String name) {
 	//controls if players leave the channel
 	System.out.println(name + " has left the chat.");
 	numberOfPlayers --;
+	updateClients();
 	System.out.println("The total number of connected clients is now: " + numberOfPlayers);
 }
 
