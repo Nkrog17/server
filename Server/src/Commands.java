@@ -129,7 +129,9 @@ public class Commands {
 				+ "/joke - server tells a joke.\n" + "/red <msg> - message appears in red.\n"
 				+ "/yellow <msg> - message appears in yellow.\n" + "/green <msg> - message appears in green.\n"
 				+ "/blue <msg> message appears in blue.\n" + "/hangman - starts a new hangman game. \n"
-				+ "!<char> - guesses char in hangman game. \n" + "/rename <name> - change your name. \n";
+				+ "!<char> - guesses char in hangman game. \n" + "/rename <name> - change your name. \n"
+				+ "/renaeme <name> - change your name.\n"
+				+ "/roll - roll the die.;
 
 		return help;
 	}
